@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Doctor Login - PatientCare</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f3f7fb;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-container {
+        width: 100%;
+        max-width: 420px;
+        padding: 20px;
+      }
+
+      .login-card {
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        text-align: center;
+        color: #176b87;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #176b87;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        background: #176b87;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .messages {
+        margin-bottom: 20px;
+      }
+
+      .message {
+        padding: 10px;
+        border-radius: 6px;
+        background: #f8d7da;
+        color: #842029;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .switch-login {
+        text-align: center;
+        margin-top: 22px;
+        color: #666;
+      }
+
+      .switch-login a {
+        color: #176b87;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .switch-login a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <h1>Doctor Login</h1>
+
+        <p class="subtitle">Login to manage your appointments</p>
+
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+          <div class="message">{{ message }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <button type="submit">Doctor Login</button>
+        </form>
+
+        <div class="switch-login">
+          Are you a patient?
+          <a href="{% url 'login' %}">Patient Login</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

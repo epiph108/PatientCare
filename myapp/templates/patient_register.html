@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Registration</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f3f7fb;
+        color: #243447;
+      }
+      .navbar {
+        background: #176b87;
+        padding: 18px 7%;
+        color: white;
+      }
+      .navbar-inner {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+      }
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        margin-left: 24px;
+      }
+      .nav-link:hover {
+        text-decoration: underline;
+      }
+      .page-wrapper {
+        width: 92%;
+        max-width: 850px;
+        margin: 45px auto;
+      }
+      .card {
+        background: white;
+        border-radius: 14px;
+        padding: 35px;
+        box-shadow: 0 8px 30px rgba(23, 107, 135, 0.1);
+      }
+      .page-title {
+        margin: 0 0 8px;
+        color: #176b87;
+        font-size: 28px;
+      }
+      .page-subtitle {
+        margin: 0 0 30px;
+        color: #718096;
+      }
+      .messages {
+        margin-bottom: 22px;
+      }
+      .message {
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .message.success {
+        background: #e8f7ef;
+        color: #197044;
+      }
+      .message.error {
+        background: #fdecec;
+        color: #b42318;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+      label {
+        margin-bottom: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #34495e;
+      }
+      input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d5dee7;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      input:focus {
+        border-color: #176b87;
+      }
+      .submit-button {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        padding: 13px 20px;
+        margin-top: 25px;
+        background: #176b87;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .submit-button:hover {
+        background: #12566d;
+      }
+      .bottom-text {
+        text-align: center;
+        margin-top: 22px;
+        color: #718096;
+        font-size: 14px;
+      }
+      .bottom-text a {
+        color: #176b87;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      @media (max-width: 650px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full-width {
+          grid-column: auto;
+        }
+        .card {
+          padding: 25px 20px;
+        }
+        .navbar-inner {
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <div class="brand">PatientCare</div>
+        <div>
+          <a href="{% url 'login' %}" class="nav-link">Login</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-wrapper">
+      <div class="messages">
+        {% if messages %} {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %} {% endif %}
+      </div>
+
+      <div class="card">
+        <h1 class="page-title">Patient Registration</h1>
+        <p class="page-subtitle">
+          Create your patient account by filling in the information below.
+        </p>
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                maxlength="200"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter 10-digit mobile number"
+                maxlength="10"
+                pattern="[6-9][0-9]{9}"
+                title="Mobile number must be 10 digits and start with 6, 7, 8, or 9"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                maxlength="200"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" required />
+            </div>
+            <div class="form-group full-width">
+              <label for="address">Address</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                maxlength="500"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="submit-button">Register Patient</button>
+        </form>
+
+        <div class="bottom-text">
+          Already have an account? <a href="{% url 'login' %}">Login here</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

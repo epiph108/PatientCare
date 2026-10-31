@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add Medical Record - PatientCare</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f3f7fb;
+        color: #333;
+      }
+
+      nav {
+        background: #176b87;
+        color: white;
+        padding: 18px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .back {
+        color: white;
+        text-decoration: none;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 700px;
+        margin: 40px auto;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 14px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+      }
+
+      h1 {
+        color: #176b87;
+        margin-top: 0;
+      }
+
+      .patient-info {
+        background: #f3f7fb;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      button {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 8px;
+        background: #176b87;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .messages {
+        margin-bottom: 20px;
+      }
+
+      .message {
+        padding: 10px;
+        border-radius: 7px;
+        background: #f8dddd;
+        color: #a33;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="brand">PatientCare</div>
+
+      <a href="{% url 'doctor_dashboard' %}" class="back">
+        Back to Dashboard
+      </a>
+    </nav>
+
+    <div class="container">
+      <div class="card">
+        <h1>Add Medical Record</h1>
+
+        <div class="patient-info">
+          <strong>Patient:</strong>
+          {{ appointment.patient.name }}
+
+          <br /><br />
+
+          <strong>Appointment:</strong>
+          {{ appointment.appointment_date|date:"d M Y, h:i A" }}
+        </div>
+
+        {% if messages %}
+
+        <div class="messages">
+          {% for message in messages %}
+
+          <div class="message">{{ message }}</div>
+
+          {% endfor %}
+        </div>
+
+        {% endif %}
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <label for="diagnosis"> Diagnosis </label>
+
+          <textarea
+            id="diagnosis"
+            name="diagnosis"
+            placeholder="Enter diagnosis"
+            required
+          ></textarea>
+
+          <label for="medicine"> Medicine </label>
+
+          <textarea
+            id="medicine"
+            name="medicine"
+            placeholder="Enter prescribed medicines"
+            required
+          ></textarea>
+
+          <label for="notes"> Notes </label>
+
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="Additional notes (optional)"
+          ></textarea>
+
+          <button type="submit">Save Medical Record</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
         sample_doctors = [
             {
-                "name": "Dr. Rahul Sharma",
+                "name": "Rahul Sharma",
                 "specialization": "Cardiologist",
                 "mobile": "9876543211",
                 "email": "rahul@example.com",
@@ -19,7 +19,7 @@ class Command(BaseCommand):
                 "available": True
             },
             {
-                "name": "Dr. Priya Mehta",
+                "name": "Priya Mehta",
                 "specialization": "Dermatologist",
                 "mobile": "9123456781",
                 "email": "priya@example.com",
@@ -28,7 +28,7 @@ class Command(BaseCommand):
                 "available": True
             },
             {
-                "name": "Dr. Amit Patel",
+                "name": "Amit Patel",
                 "specialization": "General Physician",
                 "mobile": "9988776656",
                 "email": "amit@example.com",

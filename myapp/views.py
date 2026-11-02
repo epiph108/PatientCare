@@ -29,7 +29,7 @@ def patient_register(request):
                 )
 
             # Mobile number validation
-            if not re.fullmatch(r"[0-9]{9}", mobile):
+            if not re.fullmatch(r"[0-9]{10}", mobile):
                 messages.error(
                     request,
                     "Please enter a valid 10-digit mobile number."

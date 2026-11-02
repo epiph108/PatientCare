@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand
+from django.contrib.auth.hashers import make_password
 from myapp.models import Patient
+
 
 class Command(BaseCommand):
     help = 'Seeds the database with sample patients for demo purposes'
@@ -14,7 +16,7 @@ class Command(BaseCommand):
         for data in sample_patients:
             patient, created = Patient.objects.get_or_create(
                 email=data["email"],
-                defaults=data
+                defaults={**data, "password": make_password(data["password"])}
             )
             if created:
                 self.stdout.write(self.style.SUCCESS(f"Created: {patient.name}"))

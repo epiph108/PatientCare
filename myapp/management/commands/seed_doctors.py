@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
+from django.contrib.auth.hashers import make_password
 from myapp.models import Doctor
-
 
 class Command(BaseCommand):
 
@@ -42,7 +42,7 @@ class Command(BaseCommand):
 
             doctor, created = Doctor.objects.get_or_create(
                 email=data["email"],
-                defaults=data
+                defaults={**data, "password": make_password(data["password"])}
             )
 
             if created:

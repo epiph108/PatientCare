@@ -2,7 +2,6 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth.hashers import make_password
 from myapp.models import Patient
 
-
 class Command(BaseCommand):
     help = 'Seeds the database with sample patients for demo purposes'
 

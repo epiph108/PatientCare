@@ -1,7 +1,10 @@
+{% load static %}
 <!doctype html>
 
 <html lang="en">
   <head>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -287,7 +290,7 @@
 
     <nav class="navbar">
       <div class="navbar-inner">
-        <div class="brand">PatientCare</div>
+        <div class="brand"><img src="{% static 'logo-icon.png' %}" alt="PatientCare logo" style="height:34px;width:34px;border-radius:8px;background:#fff;vertical-align:middle;margin-right:10px;">PatientCare</div>
 
         <div class="nav-links">
           <a href="{% url 'patient_home' %}" class="nav-link"> Home </a>

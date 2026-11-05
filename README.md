@@ -2,8 +2,6 @@
 
 A simple web app built with Django where patients can register, find doctors and book appointments, and doctors can accept or reject those appointments and add medical records after the visit.
 
-This project is built in small daily steps, with one Git commit per day, so the full history shows how the application was developed from scratch.
-
 ## Table of Contents
 
 - [1. Introduction](#1-introduction)

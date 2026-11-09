@@ -2,6 +2,8 @@
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://patientcare.pythonanywhere.com/)
 
+🔗 **Try it here:** https://patientcare.pythonanywhere.com/
+
 A simple web app built with Django where patients can register, find doctors and book appointments, and doctors can accept or reject those appointments and add medical records after the visit.
 
 ## Table of Contents

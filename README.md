@@ -1,7 +1,6 @@
 # Doctor Patient Management System
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://patientcare.pythonanywhere.com/)
-
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://patientcare.pythonanywhere.com/) 
 🔗 **Try it here:** https://patientcare.pythonanywhere.com/
 (Demo logins are listed in [Demo Credentials](#31-demo-credentials).) 
 

@@ -1,8 +1,6 @@
-# Doctor Patient Management System
+# Doctor Patient Management System [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://patientcare.pythonanywhere.com/)
 
 A simple web app built with Django where patients can register, find doctors and book appointments, and doctors can accept or reject those appointments and add medical records after the visit.
-
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://patientcare.pythonanywhere.com/)
 
 ## Table of Contents
 
